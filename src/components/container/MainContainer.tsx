@@ -1,12 +1,16 @@
-import TableBody from '../table/TableBody'
+import { useClientContext } from '../../hooks/useClientContext'
 import TableComponent from '../table/TableComponent'
-import TableHeader from '../table/TableHeader'
+import TableEmpty from '../table/TableEmpty'
 import './MainContainer.css'
 
 const MainContainer = () => {
+  const { items } = useClientContext()
+
+  if (!items.length) return <TableEmpty />
+
   return (
     <div className='main-container'>
-      <TableComponent header={<TableHeader />} body={<TableBody />} />
+      <TableComponent />
     </div>
   )
 }

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useClientContext } from '../../hooks/useClientContext'
 import './records.css'
+import TableBody from './TableBody'
+import TableHeader from './TableHeader'
 
 export interface TableComponentProps {
-  header: JSX.Element
-  body: JSX.Element
+  children: React.ReactNode
 }
 
-const TableComponent = ({ header, body }: TableComponentProps) => {
+const TableComponent = () => {
   const { readItems } = useClientContext()
 
   React.useEffect(() => {
@@ -17,8 +18,8 @@ const TableComponent = ({ header, body }: TableComponentProps) => {
 
   return (
     <table id='tableClient' className='records-container'>
-      {header && header}
-      {body && body}
+      <TableHeader />
+      <TableBody />
     </table>
   )
 }

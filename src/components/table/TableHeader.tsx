@@ -1,6 +1,5 @@
 import { columnsTable } from '../../constants/data-table'
 import './records.css'
-import { TableRowItem } from './TableRowItem'
 
 const TableHeaderItem = ({ column }: { column: string }) => {
   return (
@@ -13,11 +12,11 @@ const TableHeaderItem = ({ column }: { column: string }) => {
 const TableHeader = () => {
   return (
     <thead className='table-header'>
-      <TableRowItem classNames='tr-records'>
+      <tr className='tr-records'>
         {columnsTable.map((column: string, index: number) => (
           <TableHeaderItem key={index} column={column} />
         ))}
-      </TableRowItem>
+      </tr>
     </thead>
   )
 }

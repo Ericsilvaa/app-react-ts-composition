@@ -41,7 +41,7 @@ export const ClientProvider = ({ children }: ProviderProps) => {
     }
   }
 
-  const updateItem = (id: number, updatedItem: UserWithId) => {
+  const updateItem = (id: number, updatedItem: UserType) => {
     const index = items.findIndex((item) => item.id === id)
     if (index !== -1) {
       setItems(api.update(index, items, updatedItem))

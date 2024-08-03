@@ -12,10 +12,6 @@ const FormContainer = () => {
   const { createItem, isClientEdit, updateItem } = useClientContext()
   const { closeModal } = useModalContext()
 
-  const handleClick = () => {
-    closeModal()
-  }
-
   const [formData, setFormData] = useState<UserType>({
     nome: '',
     email: '',
@@ -23,7 +19,11 @@ const FormContainer = () => {
     cidade: ''
   })
 
-  const handleChange = (e) => {
+  const handleClick = () => {
+    closeModal()
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prevData) => ({
       ...prevData,
@@ -37,7 +37,7 @@ const FormContainer = () => {
     setFormData(clearFields())
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (validFields(formData)) {

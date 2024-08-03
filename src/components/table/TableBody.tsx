@@ -6,7 +6,6 @@ import { ActionClientType } from '../../types/components/TButton'
 import { UserWithId } from '../../types/TUser'
 import InfoActions from '../button/ButtonActions'
 import './records.css'
-import TableEmpty from './TableEmpty'
 import TableInfo from './TableInfo'
 
 const TableBody = () => {
@@ -24,10 +23,7 @@ const TableBody = () => {
     }
 
     return btn.id === 'editar' ? handleOpenModal() : handleDeleteItem()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }
-
-  if (!items.length) return <TableEmpty />
 
   return (
     <tbody className='table-container'>

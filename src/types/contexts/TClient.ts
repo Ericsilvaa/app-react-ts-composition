@@ -7,7 +7,7 @@ export interface ClientContextTypeState {
 }
 
 export interface ClientContextTypeActions {
-  updateItem: (id: number, updatedItem: UserWithId) => ReturnDataType
+  updateItem: (id: number, updatedItem: UserType) => ReturnDataType
   createItem: (item: UserType) => ReturnDataType
   readItems: () => void
   deleteItem: (id: number) => void
@@ -32,7 +32,7 @@ export interface ApiCrudType {
   update: (
     index: number,
     clients: UserWithId[],
-    updatedItem: UserWithId
+    updatedItem: UserType
   ) => UserWithId[]
 }
 
