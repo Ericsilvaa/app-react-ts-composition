@@ -37,3 +37,15 @@ main {
     box-shadow: none;
   }
 }
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: var(--terciary-color);
+}
