@@ -1,25 +1,17 @@
 import { handleClickType } from '../types/components/TTable'
 
+type buttonActionsType = {
+  [key: string]: () => void
+}
+
 const handleClick = ({ clientId, id, onClick }: handleClickType) => {
-  switch (id) {
-    case 'editar':
-      onClick({
-        clientId,
-        id
-      })
-      break
-    case 'cancelar':
-      onClick()
-      break
-    case 'excluir':
-      onClick({
-        clientId,
-        id
-      })
-      break
-    default:
-      return
+  const actions: buttonActionsType = {
+    editar: () => onClick({ id, clientId }),
+    excluir: () => onClick({ id, clientId }),
+    cancelar: () => onClick()
   }
+
+  return actions[id]()
 }
 
 export { handleClick }
