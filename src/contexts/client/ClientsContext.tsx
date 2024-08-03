@@ -1,14 +1,9 @@
-import { createContext, useEffect, useState } from 'react'
-import { ClientContextType, ProviderProps } from '../../types/contexts/TClient'
+import { createContext, useState } from 'react'
+import { ContextType, ProviderProps } from '../../types/contexts/TClient'
 import { UserType, UserWithId } from '../../types/TUser'
-import {
-  createClient,
-  deleteClientById,
-  readClient,
-  updateClient
-} from '../../utils/crud-utils'
+import { api } from '../../utils/crud-utils'
 
-export const ClientContext = createContext<ClientContextType | null>(null)
+export const ClientContext = createContext<ContextType>(null)
 
 export const ClientProvider = ({ children }: ProviderProps) => {
   const [isClientEdit, setIsClientEdit] = useState<UserWithId | null>(null)
@@ -23,12 +18,19 @@ export const ClientProvider = ({ children }: ProviderProps) => {
   }
 
   const readItems = () => {
-    const savedItems = readClient()
+    const savedItems = api.read()
     setItems(savedItems)
   }
 
   const createItem = (item: UserType) => {
-    const { data, id } = createClient(items, item)
+    const { data, id } = api.create(items, item)
+
+    if (!data) {
+      return {
+        id,
+        success: false
+      }
+    }
 
     setItems(data)
 
@@ -42,7 +44,7 @@ export const ClientProvider = ({ children }: ProviderProps) => {
   const updateItem = (id: number, updatedItem: UserWithId) => {
     const index = items.findIndex((item) => item.id === id)
     if (index !== -1) {
-      setItems(updateClient(index, items, updatedItem))
+      setItems(api.update(index, items, updatedItem))
 
       return {
         id,
@@ -57,7 +59,7 @@ export const ClientProvider = ({ children }: ProviderProps) => {
   }
 
   const deleteItem = (id: number) => {
-    deleteClientById(id)
+    api.delete(id)
     readItems()
   }
 
@@ -65,12 +67,7 @@ export const ClientProvider = ({ children }: ProviderProps) => {
     setIsClientEdit(null)
   }
 
-  useEffect(() => {
-    const savedItems = readClient()
-    setItems(savedItems)
-  }, [])
-
-  const value: ClientContextType = {
+  const value: ContextType = {
     items,
     createItem,
     readItems,
@@ -85,23 +82,3 @@ export const ClientProvider = ({ children }: ProviderProps) => {
     <ClientContext.Provider {...{ value }}>{children}</ClientContext.Provider>
   )
 }
-
-// const updateItem = (id, updatedItem) => {
-//   const index = items.findIndex((item) => item.id === id)
-//   if (index !== -1) {
-//     const updatedItems = [...items]
-//     updatedItems[index] = { ...updatedItems[index], ...updatedItem }
-//     updateClient(index, updatedItems[index])
-//     setItems(updatedItems)
-
-//     return {
-//       id,
-//       success: true
-//     }
-//   }
-
-//   return {
-//     id,
-//     success: false
-//   }
-// }

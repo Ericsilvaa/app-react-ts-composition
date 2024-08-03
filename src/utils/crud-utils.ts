@@ -1,3 +1,4 @@
+import { ApiCrudType } from '../types/contexts/TClient'
 import { UserType, UserWithId } from '../types/TUser'
 import { getLocalStorage, setLocalStorage } from './localstorage-utils'
 
@@ -27,7 +28,7 @@ const updateClient = (
   return updatedItems
 }
 
-const createClient = (items: UserType[], client: UserWithId) => {
+const createClient = (items: UserWithId[], client: UserType) => {
   const newClient: UserWithId = { ...client, id: Date.now() }
 
   const dbClient = getLocalStorage()
@@ -41,4 +42,11 @@ const createClient = (items: UserType[], client: UserWithId) => {
   }
 }
 
-export { createClient, deleteClientById, readClient, updateClient }
+const api: ApiCrudType = {
+  create: createClient,
+  delete: deleteClientById,
+  read: readClient,
+  update: updateClient
+}
+
+export { api }
