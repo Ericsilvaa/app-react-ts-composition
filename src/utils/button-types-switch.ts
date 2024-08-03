@@ -1,15 +1,13 @@
 import { handleClickType } from '../types/components/TTable'
 
-type buttonActionsType = {
-  [key: string]: () => void
-}
+type ActionsType = Record<string, () => void>
 
 const handleClick = ({ clientId, id, onClick }: handleClickType) => {
-  const actions: buttonActionsType = {
+  const actions = {
     editar: () => onClick({ id, clientId }),
     excluir: () => onClick({ id, clientId }),
     cancelar: () => onClick()
-  }
+  } as ActionsType
 
   return actions[id]()
 }
