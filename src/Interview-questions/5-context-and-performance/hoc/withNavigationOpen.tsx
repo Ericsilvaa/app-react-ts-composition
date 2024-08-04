@@ -1,11 +1,17 @@
-import React, { useContext } from 'react'
-import { ContextNavigation } from './NavigationController'
+import React, { ComponentType, useContext } from 'react'
+import { ContextNavigation } from '../context/NavigationController'
 
-const withNavigationOpen = (AnyComponent: any) => {
+export interface WithNavigationOpenProps {
+  openNav: () => void
+}
+
+const withNavigationOpen = (
+  AnyComponent: ComponentType<WithNavigationOpenProps>
+) => {
   // wrap the component from the arguments in React.memo here
   const AnyComponentMemo = React.memo(AnyComponent)
 
-  return (props: any) => {
+  return (props: Omit<WithNavigationOpenProps, 'openNav'>) => {
     const { open } = useContext(ContextNavigation)
 
     // return memoized component here

@@ -6,7 +6,7 @@ import React, {
   useState
 } from 'react'
 
-import './styles/styles.css'
+import '../styles/styles.css'
 
 export const ContextNavigation = React.createContext({
   isNavExpanded: false,
