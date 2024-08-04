@@ -1,4 +1,4 @@
-import Providers from '../../providers/Providers'
+import Providers from '../providers/Providers'
 import ComponentRoot from './ComponentRoot'
 
 const RootWrapper = () => {

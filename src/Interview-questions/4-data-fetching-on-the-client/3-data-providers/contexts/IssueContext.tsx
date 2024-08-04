@@ -1,5 +1,5 @@
 import React from 'react'
-import { IssueType, issueUrl } from '../api/data'
+import { IssueType, issueUrl } from '../../shared/api/data'
 import { IContextProps } from './types'
 
 const IssueContext = React.createContext<IssueType | undefined>({} as IssueType)

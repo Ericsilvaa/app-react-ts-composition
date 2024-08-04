@@ -1,5 +1,5 @@
 import React from 'react'
-import { commentsUrl, CommentType } from '../api/data'
+import { commentsUrl, CommentType } from '../../shared/api/data'
 import { IContextProps } from './types'
 
 const CommentsContext = React.createContext<CommentType[] | undefined>([])

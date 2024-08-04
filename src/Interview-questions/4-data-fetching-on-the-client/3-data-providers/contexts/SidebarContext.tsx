@@ -1,5 +1,5 @@
 import React from 'react'
-import { SidebarType, sidebarUrl } from '../api/data'
+import { SidebarType, sidebarUrl } from '../../shared/api/data'
 import { IContextProps } from './types'
 
 const SidebarContext = React.createContext<SidebarType[] | undefined>([])
