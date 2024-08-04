@@ -15,6 +15,9 @@ export const ContextNavigation = React.createContext({
   open: () => {}
 })
 
+// colocado useCallBack e useMemo para evitar re-render desnecessário
+// no componente NavigationController, pois não é necessário
+// que o componente atualize com o evento de scroll. => Layout.tsx
 const NavigationController = ({ children }: { children: ReactNode }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
