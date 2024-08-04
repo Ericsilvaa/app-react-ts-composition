@@ -1,8 +1,8 @@
 import React from 'react'
-import HomePage from './pages/Home/HomePage'
+import VirtualizationRoot from './Interview-questions/7-virtualization-list/VirtualizationRoot'
 
 const App: React.FC = () => {
-  return <HomePage />
+  return <VirtualizationRoot />
 }
 
 export default App
