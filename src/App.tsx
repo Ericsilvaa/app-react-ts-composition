@@ -1,8 +1,8 @@
 import React from 'react'
-import VirtualizationRoot from './Interview-questions/7-virtualization-list/VirtualizationRoot'
+import MultiStepForm from './Interview-questions/8-multi-steps-form/components/form/MultiStepForm'
 
 const App: React.FC = () => {
-  return <VirtualizationRoot />
+  return <MultiStepForm />
 }
 
 export default App

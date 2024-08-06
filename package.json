@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@tanstack/react-query": "^5.51.21",
     "lorem-ipsum": "^2.0.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-virtualized": "^9.22.5"
+    "react-hook-form": "^7.52.2",
+    "react-virtualized": "^9.22.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
