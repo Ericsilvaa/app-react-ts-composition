@@ -49,7 +49,7 @@ const ReviewAndConfirmation = () => {
             </div>
             <div className='flex justify-between'>
               <span className='font-semibold'>Skills:</span>
-              <span>{formData.profession_information?.skills.join(', ')}</span>
+              <span>{formData.profession_information?.skills}</span>
             </div>
           </div>
         </div>
