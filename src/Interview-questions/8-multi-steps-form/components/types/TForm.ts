@@ -1,33 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PropsWithChildren } from 'react'
 
-export interface PersonalInformation {
-  fullName: string
-  birthDate: string
-  gender: 'male' | 'female' | 'other'
-  email: string
-}
-
-export interface AddresType {
-  street: string
-  city: string
-  state: string
-  postalCode: string
-  number: string
-}
-
-export interface ContactDetailsType {
-  phoneNumber: string
-  alternatePhoneNumber?: string
-  contactPreferences: 'phone' | 'email' | 'sms'
-}
-
-export interface ProfessionType {
-  occupation: string
-  companyName: string
-  yearsOfExperience: number
-  skills: string[] | string
-}
+import {
+  AddresType,
+  ContactDetailsType,
+  PersonalInformation,
+  ProfessionType
+} from './TUser'
 
 export type DataForm = {
   personal_information: PersonalInformation
@@ -42,16 +20,23 @@ export type DataValuesType =
   | ContactDetailsType
   | ProfessionType
 
-// types context
-export interface UserProviderProps extends PropsWithChildren {}
-export interface UserContextType {
-  data: DataForm
-  // currentStep: CurrentStepsType
-  currentStep: number
-  setFieldValue: (section: keyof DataForm, value: DataValuesType) => void
-  // setFieldValue: (section: keyof DataForm, field: string, value: any) => void
-  nextStep: () => void
-  prevStep: () => void
+export interface ILabelsFormKeys {
+  fullName: string
+  birthDate: string
+  gender: string
+  email: string
+  occupation: string
+  companyName: string
+  yearsOfExperience: string
+  skills: string
+  street: string
+  city: string
+  state: string
+  postalCode: string
+  phoneNumber: string
+  alternatePhoneNumber: string
+  contactPreferences: string
+  number: string
 }
 
 // enums

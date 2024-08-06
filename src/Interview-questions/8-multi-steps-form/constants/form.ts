@@ -17,3 +17,22 @@ export const OPTIONS_CONTACT_PREFERENCES = [
   { value: 'email', label: 'Email' },
   { value: 'sms', label: 'SMS' }
 ]
+
+export const LABELMAPPING: Record<string, string> = {
+  fullName: 'Nome Completo',
+  birthDate: 'Data de Nascimento',
+  gender: 'Gênero',
+  email: 'Email',
+  occupation: 'Ocupação',
+  companyName: 'Empresa',
+  yearsOfExperience: 'Anos de Experiência',
+  skills: 'Habilidades',
+  street: 'Rua',
+  city: 'Cidade',
+  state: 'Estado',
+  numero: 'Número',
+  postalCode: 'Código Postal',
+  phoneNumber: 'Número de Telefone',
+  alternatePhoneNumber: 'Telefone Alternativo',
+  contactPreferences: 'Preferências de Contato'
+}

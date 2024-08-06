@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useFormContext } from '../../../context/useFormContext'
 import TextInput from '../../input/TextInput'
 import { DataForm } from '../../types/TForm'
-type FormData = DataForm[`profession_information`]
+type FormData = DataForm[`profession_information`] & { skills: string }
 
 const ProfessionInformation = () => {
   const { setFieldValue, nextStep } = useFormContext()
@@ -10,9 +10,13 @@ const ProfessionInformation = () => {
   const { register, handleSubmit } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (formData) => {
+    const skills = formData.skills
+      ? (formData.skills as string).split(', ')
+      : []
+
     const dataValue = {
       ...formData,
-      skills: (formData.skills as string).split(', ')
+      skills
     }
 
     console.log('data', formData)
