@@ -1,32 +1,34 @@
 import { PropsWithChildren } from 'react'
 
-export type UserType = {
+export type PersonalInformation = {
   fullName: string
   birthDate: string
-  gender: string
+  gender: 'male' | 'female' | 'other'
+  email: string
 }
 
 export type AddresType = {
   street: string
-  number: string
   city: string
   state: string
-  country: string
+  postalCode: string
 }
 
 export type ContactDetailsType = {
-  phone: string
-  cellPhone: string
-  email: string
+  phoneNumber: string
+  alternatephoneNumber?: string
+  contactPreferences: 'phone' | 'email' | 'sms'
 }
 
 export type ProfessionType = {
-  profession: string
-  company: string
+  occupation: string
+  companyName: string
+  yearsOfExperience: number
+  skills: string[]
 }
 
 export type DataForm = {
-  personal_information: UserType
+  personal_information: PersonalInformation
   profession_information: ProfessionType
   address: AddresType
   contact_details: ContactDetailsType
@@ -38,7 +40,7 @@ export interface UserContextType {
   data: DataForm
   // currentStep: CurrentStepsType
   currentStep: number
-  setFieldValue: (field: string, value: string) => void
+  setFieldValue: (section: keyof DataForm, field: string, value: string) => void
   nextStep: () => void
   prevStep: () => void
 }
@@ -49,7 +51,7 @@ export enum Steps {
   ADDRESS = 2,
   CONTACT_DETAILS = 3,
   PROFESSION_INFORMATION = 4,
-  RESUME = 5
+  REVIEW = 5
 }
 
 export type CurrentStepsType = keyof typeof Steps
