@@ -9,13 +9,13 @@ const FormSteps = () => {
   const { currentStep } = useFormContext()
 
   return (
-    <>
+    <div className='flex'>
       {currentStep === 1 && <Step1 />}
       {currentStep === 2 && <Step2 />}
       {currentStep === 3 && <Step3 />}
       {currentStep === 4 && <Step4 />}
       {currentStep === 5 && <ReviewAndConfirmation />}
-    </>
+    </div>
   )
 }
 
