@@ -1,26 +1,20 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { OPTIONS_CONTACT_PREFERENCES } from '../../../constants/form'
 import { useFormContext } from '../../../context/useFormContext'
 import TextInput from '../../input/TextInput'
+import SelectInput from '../../select/Select'
 import { DataForm } from '../../types/TForm'
-type FormData = DataForm[`profession_information`] & { skills: string }
 
-const ProfessionInformation = () => {
+type FormData = DataForm[`contact_details`]
+
+const PersonalContactDetails = () => {
   const { setFieldValue, nextStep } = useFormContext()
 
   const { register, handleSubmit } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (formData) => {
-    const skills = formData.skills
-      ? (formData.skills as string).split(', ')
-      : []
-
-    const dataValue = {
-      ...formData,
-      skills
-    }
-
     console.log('data', formData)
-    setFieldValue('profession_information', dataValue)
+    setFieldValue('contact_details', formData)
 
     nextStep()
   }
@@ -31,21 +25,21 @@ const ProfessionInformation = () => {
       className='max-w-md mx-auto p-4 bg-white shadow-md rounded-md'
     >
       <TextInput
-        id='occupation'
-        label='Occupation'
-        {...register('occupation')}
+        id='phoneNumber'
+        label='Phone Number'
+        {...register('phoneNumber')}
       />
       <TextInput
-        id='companyName'
-        label='Company'
-        {...register('companyName')}
+        id='alternatePhoneNumber'
+        label='Alternate Phone Number'
+        {...register('alternatePhoneNumber')}
       />
-      <TextInput
-        id='yearsOfExperience'
-        label='Years of Experience'
-        {...register('yearsOfExperience')}
+      <SelectInput
+        id='contactPreferences'
+        label='Contact Preferences'
+        options={OPTIONS_CONTACT_PREFERENCES}
+        {...register('contactPreferences')}
       />
-      <TextInput id='skills' label='Skills' {...register('skills')} />
 
       <button
         type='submit'
@@ -57,4 +51,4 @@ const ProfessionInformation = () => {
   )
 }
 
-export default ProfessionInformation
+export default PersonalContactDetails

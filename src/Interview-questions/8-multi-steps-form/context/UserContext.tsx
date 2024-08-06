@@ -1,10 +1,9 @@
 import { createContext, useState } from 'react'
 import {
-  DataForm,
-  DataValuesType,
   UserContextType,
   UserProviderProps
-} from '../components/types/TForm'
+} from '../components/types/TContext'
+import { DataForm, DataValuesType } from '../components/types/TForm'
 
 export const UserContext = createContext<UserContextType>({} as UserContextType)
 

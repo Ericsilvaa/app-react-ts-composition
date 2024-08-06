@@ -2,25 +2,17 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useFormContext } from '../../../context/useFormContext'
 import TextInput from '../../input/TextInput'
 import { DataForm } from '../../types/TForm'
-type FormData = DataForm[`profession_information`] & { skills: string }
 
-const ProfessionInformation = () => {
+type FormData = DataForm[`address`]
+
+const PersonalAddress = () => {
   const { setFieldValue, nextStep } = useFormContext()
 
   const { register, handleSubmit } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (formData) => {
-    const skills = formData.skills
-      ? (formData.skills as string).split(', ')
-      : []
-
-    const dataValue = {
-      ...formData,
-      skills
-    }
-
     console.log('data', formData)
-    setFieldValue('profession_information', dataValue)
+    setFieldValue('address', formData)
 
     nextStep()
   }
@@ -30,22 +22,11 @@ const ProfessionInformation = () => {
       onSubmit={handleSubmit(onSubmit)}
       className='max-w-md mx-auto p-4 bg-white shadow-md rounded-md'
     >
-      <TextInput
-        id='occupation'
-        label='Occupation'
-        {...register('occupation')}
-      />
-      <TextInput
-        id='companyName'
-        label='Company'
-        {...register('companyName')}
-      />
-      <TextInput
-        id='yearsOfExperience'
-        label='Years of Experience'
-        {...register('yearsOfExperience')}
-      />
-      <TextInput id='skills' label='Skills' {...register('skills')} />
+      <TextInput id='street' label='Street' {...register('street')} />
+      <TextInput id='number' label='Number' {...register('number')} />
+      <TextInput id='city' label='City' {...register('city')} />
+      <TextInput id='state' label='State' {...register('state')} />
+      <TextInput id='zipCode' label='Zip Code' {...register('postalCode')} />
 
       <button
         type='submit'
@@ -57,4 +38,4 @@ const ProfessionInformation = () => {
   )
 }
 
-export default ProfessionInformation
+export default PersonalAddress
