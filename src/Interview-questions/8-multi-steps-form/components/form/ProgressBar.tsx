@@ -28,6 +28,7 @@ const ProgressBar = () => {
           ))}
         </div>
       </div>
+      {/* {JSON.stringify(data)} */}
     </div>
   )
 }

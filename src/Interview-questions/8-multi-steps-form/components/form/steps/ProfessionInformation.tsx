@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useFormContext } from '../../../context/useFormContext'
+import TextInput from '../../input/TextInput'
 import { DataForm } from '../../types/TForm'
 type FormData = DataForm[`profession_information`]
 
@@ -25,62 +26,23 @@ const ProfessionInformation = () => {
       onSubmit={handleSubmit(onSubmit)}
       className='max-w-md mx-auto p-4 bg-white shadow-md rounded-md'
     >
-      <div className='mb-4'>
-        <label
-          htmlFor='occupation'
-          className='block text-sm font-medium text-gray-700'
-        >
-          Occupation
-        </label>
-        <input
-          type='text'
-          id='occupation'
-          {...register('occupation')}
-          className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
-        />
-      </div>
-      <div className='mb-4'>
-        <label
-          htmlFor='company'
-          className='block text-sm font-medium text-gray-700'
-        >
-          Company
-        </label>
-        <input
-          type='text'
-          id='companyName'
-          {...register('companyName')}
-          className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
-        />
-      </div>
-      <div className='mb-4'>
-        <label
-          htmlFor='yearsOfExperience'
-          className='block text-sm font-medium text-gray-700'
-        >
-          Years of Experience
-        </label>
-        <input
-          type='number'
-          id='yearsOfExperience'
-          {...register('yearsOfExperience')}
-          className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
-        />
-      </div>
-      <div className='mb-4'>
-        <label
-          htmlFor='skills'
-          className='block text-sm font-medium text-gray-700'
-        >
-          Skills
-        </label>
-        <input
-          type='text'
-          id='skills'
-          {...register('skills')}
-          className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
-        />
-      </div>
+      <TextInput
+        id='occupation'
+        label='Occupation'
+        {...register('occupation')}
+      />
+      <TextInput
+        id='companyName'
+        label='Company'
+        {...register('companyName')}
+      />
+      <TextInput
+        id='yearsOfExperience'
+        label='Years of Experience'
+        {...register('yearsOfExperience')}
+      />
+      <TextInput id='skills' label='Skills' {...register('skills')} />
+
       <button
         type='submit'
         className='w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
