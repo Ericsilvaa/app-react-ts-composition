@@ -85,7 +85,7 @@ const ReviewAndConfirmation = () => {
             </div>
             <div className='flex justify-between'>
               <span className='font-semibold'>Alternate Phone:</span>
-              <span>{formData.contact_details.alternatephoneNumber}</span>
+              <span>{formData.contact_details.alternatePhoneNumber}</span>
             </div>
             <div className='flex justify-between'>
               <span className='font-semibold'>Contact Preferences:</span>

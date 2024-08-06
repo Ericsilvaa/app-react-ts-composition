@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PropsWithChildren } from 'react'
 
 export type PersonalInformation = {
@@ -12,11 +13,12 @@ export type AddresType = {
   city: string
   state: string
   postalCode: string
+  number: string
 }
 
 export type ContactDetailsType = {
   phoneNumber: string
-  alternatephoneNumber?: string
+  alternatePhoneNumber?: string
   contactPreferences: 'phone' | 'email' | 'sms'
 }
 
@@ -40,7 +42,7 @@ export interface UserContextType {
   data: DataForm
   // currentStep: CurrentStepsType
   currentStep: number
-  setFieldValue: (section: keyof DataForm, field: string, value: string) => void
+  setFieldValue: (section: keyof DataForm, field: string, value: any) => void
   nextStep: () => void
   prevStep: () => void
 }
