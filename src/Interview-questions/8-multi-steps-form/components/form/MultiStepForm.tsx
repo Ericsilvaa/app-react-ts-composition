@@ -5,8 +5,10 @@ import FormSteps from './steps/FormSteps'
 const MultiStepForm = () => {
   return (
     <UserProvider>
-      <ProgressBar />
-      <FormSteps />
+      <div className='container flex h-[90vh] items-center justify-center gap-3 bg-gray-100 mt-5 mx-auto rounded-xl '>
+        <ProgressBar />
+        <FormSteps />
+      </div>
     </UserProvider>
   )
 }
