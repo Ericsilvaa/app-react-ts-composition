@@ -1,4 +1,4 @@
-import { UserProvider } from '../context/UserContext'
+import { UserProvider } from '../../context/UserContext'
 import ProgressBar from './ProgressBar'
 import FormSteps from './steps/FormSteps'
 

@@ -1,4 +1,4 @@
-import { useFormContext } from '../context/useFormContext'
+import { useFormContext } from '../../context/useFormContext'
 
 const ProgressBar = () => {
   const { currentStep } = useFormContext()
