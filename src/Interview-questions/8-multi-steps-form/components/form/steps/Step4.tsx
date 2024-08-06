@@ -1,44 +1,58 @@
+import React from 'react'
+import { useFormContext } from '../../../context/useFormContext'
+
 const Step4 = () => {
-  // contact_details
+  const { data, setFieldValue, nextStep } = useFormContext()
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target
+    setFieldValue('contact_details', name, value)
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    nextStep()
+  }
+
   return (
-    <>
-      <div className='form-group'>
-        <label htmlFor='phone'>Phone</label>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor='phoneNumber'>Phone Number:</label>
         <input
           type='text'
-          className='form-control'
-          id='phone'
-          placeholder='Enter phone'
-          name='phone'
-          // value={data.contact_details.phone}
-          // onChange={handleChange}
+          id='phoneNumber'
+          name='phoneNumber'
+          value={data.contact_details.phoneNumber}
+          onChange={handleInputChange}
         />
       </div>
-      <div className='form-group'>
-        <label htmlFor='cellPhone'>Cell Phone</label>
+      <div>
+        <label htmlFor='alternatePhoneNumber'>Alternate Phone Number:</label>
         <input
           type='text'
-          className='form-control'
-          id='cellPhone'
-          placeholder='Enter cell phone'
-          name='cellPhone'
-          // value={data.contact_details.cellPhone}
-          // onChange={handleChange}
+          id='alternatePhoneNumber'
+          name='alternatePhoneNumber'
+          value={data.contact_details.alternatePhoneNumber}
+          onChange={handleInputChange}
         />
       </div>
-      <div className='form-group'>
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          className='form-control'
-          id='email'
-          placeholder='Enter email'
-          name='email'
-          // value={data.contact_details.email}
-          // onChange={handleChange}
-        />
+      <div>
+        <label htmlFor='contactPreferences'>Contact Preferences:</label>
+        <select
+          id='contactPreferences'
+          name='contactPreferences'
+          value={data.contact_details.contactPreferences}
+          onChange={handleInputChange}
+        >
+          <option value='phone'>Phone</option>
+          <option value='email'>Email</option>
+          <option value='sms'>SMS</option>
+        </select>
       </div>
-    </>
+      <button type='submit'>Next</button>
+    </form>
   )
 }
 
