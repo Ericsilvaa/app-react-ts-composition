@@ -11,3 +11,9 @@ export const OPTIONS_GENRER = [
   { value: 'female', label: 'Female' },
   { value: 'other', label: 'Other' }
 ]
+
+export const OPTIONS_CONTACT_PREFERENCES = [
+  { value: 'phone', label: 'Phone' },
+  { value: 'email', label: 'Email' },
+  { value: 'sms', label: 'SMS' }
+]
