@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PropsWithChildren } from 'react'
 
-export type PersonalInformation = {
+export interface PersonalInformation {
   fullName: string
   birthDate: string
   gender: 'male' | 'female' | 'other'
   email: string
 }
 
-export type AddresType = {
+export interface AddresType {
   street: string
   city: string
   state: string
@@ -16,13 +16,13 @@ export type AddresType = {
   number: string
 }
 
-export type ContactDetailsType = {
+export interface ContactDetailsType {
   phoneNumber: string
   alternatePhoneNumber?: string
   contactPreferences: 'phone' | 'email' | 'sms'
 }
 
-export type ProfessionType = {
+export interface ProfessionType {
   occupation: string
   companyName: string
   yearsOfExperience: number
@@ -36,13 +36,20 @@ export type DataForm = {
   contact_details: ContactDetailsType
 }
 
+export type DataValuesType =
+  | PersonalInformation
+  | AddresType
+  | ContactDetailsType
+  | ProfessionType
+
 // types context
 export interface UserProviderProps extends PropsWithChildren {}
 export interface UserContextType {
   data: DataForm
   // currentStep: CurrentStepsType
   currentStep: number
-  setFieldValue: (section: keyof DataForm, field: string, value: any) => void
+  setFieldValue: (section: keyof DataForm, value: DataValuesType) => void
+  // setFieldValue: (section: keyof DataForm, field: string, value: any) => void
   nextStep: () => void
   prevStep: () => void
 }

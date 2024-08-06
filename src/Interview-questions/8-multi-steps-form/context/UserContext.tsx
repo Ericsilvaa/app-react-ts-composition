@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react'
 import {
   DataForm,
+  DataValuesType,
   UserContextType,
   UserProviderProps
 } from '../components/types/TForm'
@@ -14,16 +15,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const nextStep = () => setStepForm((prev) => prev + 1)
   const prevStep = () => setStepForm((prev) => prev - 1)
 
-  const setFieldValue = (
-    section: keyof DataForm,
-    field: string,
-    value: string
-  ) => {
+  const setFieldValue = (section: keyof DataForm, value: DataValuesType) => {
     setData((prevData) => ({
       ...prevData,
       [section]: {
-        ...prevData[section],
-        [field]: value
+        ...value
       }
     }))
   }
