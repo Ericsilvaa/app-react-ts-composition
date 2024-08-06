@@ -1,21 +1,28 @@
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useFormContext } from '../../../context/useFormContext'
+import { DataForm } from '../../types/TForm'
+type FormData = DataForm[`profession_information`]
 
-const Step2 = () => {
-  const { data, setFieldValue, nextStep } = useFormContext()
+const ProfessionInformation = () => {
+  const { setFieldValue, nextStep } = useFormContext()
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFieldValue('profession_information', name, value)
-  }
+  const { register, handleSubmit } = useForm<FormData>()
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const onSubmit: SubmitHandler<FormData> = (formData) => {
+    const dataValue = {
+      ...formData,
+      skills: (formData.skills as string).split(', ')
+    }
+
+    console.log('data', formData)
+    setFieldValue('profession_information', dataValue)
+
     nextStep()
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className='max-w-md mx-auto p-4 bg-white shadow-md rounded-md'
     >
       <div className='mb-4'>
@@ -28,9 +35,7 @@ const Step2 = () => {
         <input
           type='text'
           id='occupation'
-          name='occupation'
-          value={data.profession_information?.occupation}
-          onChange={handleInputChange}
+          {...register('occupation')}
           className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
         />
       </div>
@@ -43,10 +48,8 @@ const Step2 = () => {
         </label>
         <input
           type='text'
-          id='company'
-          name='companyName'
-          value={data.profession_information?.companyName}
-          onChange={handleInputChange}
+          id='companyName'
+          {...register('companyName')}
           className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
         />
       </div>
@@ -60,9 +63,7 @@ const Step2 = () => {
         <input
           type='number'
           id='yearsOfExperience'
-          name='yearsOfExperience'
-          value={data.profession_information?.yearsOfExperience}
-          onChange={handleInputChange}
+          {...register('yearsOfExperience')}
           className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
         />
       </div>
@@ -76,15 +77,7 @@ const Step2 = () => {
         <input
           type='text'
           id='skills'
-          name='skills'
-          value={data.profession_information?.skills.join(', ')}
-          onChange={(e) =>
-            setFieldValue(
-              'profession_information',
-              'skills',
-              e.target.value.split(', ')
-            )
-          }
+          {...register('skills')}
           className='mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
         />
       </div>
@@ -98,4 +91,4 @@ const Step2 = () => {
   )
 }
 
-export default Step2
+export default ProfessionInformation

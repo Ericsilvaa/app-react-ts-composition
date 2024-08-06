@@ -26,7 +26,7 @@ export interface ProfessionType {
   occupation: string
   companyName: string
   yearsOfExperience: number
-  skills: string[]
+  skills: string[] | string
 }
 
 export type DataForm = {
