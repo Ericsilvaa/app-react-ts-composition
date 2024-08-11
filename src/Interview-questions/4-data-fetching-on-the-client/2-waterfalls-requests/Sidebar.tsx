@@ -1,7 +1,7 @@
 import { SidebarType } from '../shared/api/data'
 import '../shared/styles/styles.css'
 
-const Sidebar = ({ data }: { data: SidebarType[] }) => {
+const SidebarWaterfalls = ({ data }: { data: SidebarType[] }) => {
   return (
     <div className='sidebar sidebar-base'>
       <ul>
@@ -13,4 +13,4 @@ const Sidebar = ({ data }: { data: SidebarType[] }) => {
   )
 }
 
-export default Sidebar
+export default SidebarWaterfalls

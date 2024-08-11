@@ -1,4 +1,4 @@
-import { CommentType, IssueType } from '../shared/api/data'
+import { CommentType, IssueType } from '../../shared/api/data'
 import '../shared/styles/styles.css'
 import Comments from './Comments'
 

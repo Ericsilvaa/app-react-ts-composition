@@ -1,4 +1,4 @@
-import { SidebarType } from '../shared/api/data'
+import { SidebarType } from '../../shared/api/data'
 import '../shared/styles/styles.css'
 
 const Sidebar = ({ data }: { data: SidebarType[] }) => {

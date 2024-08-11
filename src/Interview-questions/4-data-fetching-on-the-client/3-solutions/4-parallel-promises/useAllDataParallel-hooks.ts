@@ -6,7 +6,7 @@ import {
   issueUrl,
   SidebarType,
   sidebarUrl
-} from '../shared/api/data'
+} from '../../shared/api/data'
 
 export const useAllData = () => {
   const [sidebar, setSidebar] = useState<SidebarType[]>()

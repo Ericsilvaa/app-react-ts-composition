@@ -1,5 +1,5 @@
-import LoadingIssue from '../shared/components/loadings/LoadingIssue'
-import LoadingScreen from '../shared/components/loadings/LoadingScreen'
+import LoadingIssue from '../../shared/components/loadings/LoadingIssue'
+import LoadingScreen from '../../shared/components/loadings/LoadingScreen'
 import '../shared/styles/styles.css'
 import Issue from './Issue'
 import Sidebar from './Sidebar'
